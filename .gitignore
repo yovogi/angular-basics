@@ -10,6 +10,11 @@
 /node_modules
 /dist-server
 
+# angular
+.angular/
+/.angular
+.angular
+
 # IDEs and editors
 /.idea
 .project
