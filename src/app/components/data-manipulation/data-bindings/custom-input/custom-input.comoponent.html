@@ -1,7 +1,4 @@
 <div class="form-group">
-    <input
-        [ngModel]="inputValue"
-        class="form-control"
-        placeholder="enter a number"
-    />
+    <input #inputElement [ngModel]="inputValue" class="form-control" placeholder="enter a number"
+        (input)="changeValue(inputElement)" />
 </div>
