@@ -1,8 +1,9 @@
-<div class="border p-4">
+<div class="border p-4" (keyup)="onKeyUp($event)">
     <h1 class="text-center">User Events</h1>
     <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-danger pt-4">ALERT!</button>
+        <button type="button" class="btn btn-danger pt-4" (click)="onAlert()">ALERT!</button>
         <p class="pt-4">{{ lastPressedKey }}</p>
-        <div class="square red pt-4"></div>
+        <div class="square pt-4" [ngClass]="{red: isHovered, green:!isHovered}" (mouseenter)="turnOnHover()"
+            (mouseleave)="turnOffHover()"></div>
     </div>
 </div>
