@@ -1,3 +1,14 @@
 <div class="border p-4">
     <h1 class="text-center">Displaying Data</h1>
+    <span *ngFor="let person of listOfPeople">
+        <span *ngIf="person.age>14">
+            <span [ngClass]="{
+            red: person.job==='cook',
+            blue: person.job=='doctor', 
+            green: person.job=='pilot',
+            yellow: person.job=='mechanic'}">
+                {{person.name}}
+            </span>
+        </span>
+    </span>
 </div>

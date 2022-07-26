@@ -3,7 +3,8 @@ import { JobEnum } from "src/app/enums";
 
 @Component({
     selector: "displaying-data",
-    templateUrl: "./displaying-data.component.html"
+    styleUrls: ["./displaying-data.component.css"],
+    templateUrl: "./displaying-data.component.html",
 })
 export class DisplayingDataComponent {
     public listOfPeople: IPerson[] = [
@@ -14,7 +15,7 @@ export class DisplayingDataComponent {
         { name: "Jenny", age: 36, job: JobEnum.doctor },
         { name: "Jim", age: 60, job: JobEnum.mechanic },
         { name: "James", age: 4, job: JobEnum.cook },
-        { name: "Juniper", age: 7, job: JobEnum.cook }
+        { name: "Juniper", age: 7, job: JobEnum.cook },
     ];
 }
 

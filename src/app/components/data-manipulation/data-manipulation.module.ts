@@ -4,19 +4,20 @@ import { DataBindingComponent } from "./data-bindings/data-bindings.component";
 import { DisplayingDataComponent } from "./displaying-data/displaying-data.component";
 import { UserEventsComponent } from "./user-events/user-events.component";
 import { CustomInputComponent } from "./data-bindings/custom-input/custom-input.comoponent";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [
         DataBindingComponent,
         DisplayingDataComponent,
         UserEventsComponent,
-        CustomInputComponent
+        CustomInputComponent,
     ],
-    imports: [FormsModule],
+    imports: [FormsModule, CommonModule],
     exports: [
         DataBindingComponent,
         DisplayingDataComponent,
-        UserEventsComponent
-    ]
+        UserEventsComponent,
+    ],
 })
 export class DataManipulationModule {}
