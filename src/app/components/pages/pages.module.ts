@@ -5,8 +5,9 @@ import { AnimalsComponent } from "./animals/animals.component";
 import { DataManipulationModule } from "../data-manipulation/data-manipulation.module";
 import { DirectivesDemoComponent } from "./directives-demo/directives-demo.component";
 import { PipesDemoComponent } from "./pipes-demo/pipes-demo.component";
-import { WeatherComponent } from './weather/weather.component';
-import { CommonModule } from '@angular/common';
+import { WeatherComponent } from "./weather/weather.component";
+import { CommonModule } from "@angular/common";
+import { AnimalsModule } from "src/app/animals/animals.module";
 
 @NgModule({
     declarations: [
@@ -15,9 +16,9 @@ import { CommonModule } from '@angular/common';
         AnimalsComponent,
         DirectivesDemoComponent,
         PipesDemoComponent,
-        WeatherComponent
+        WeatherComponent,
     ],
-    imports: [DataManipulationModule, CommonModule],
-    exports: []
+    imports: [DataManipulationModule, CommonModule, AnimalsModule],
+    exports: [],
 })
-export class PagesModule { }
+export class PagesModule {}
