@@ -15,7 +15,7 @@ export class UserEventsComponent {
     }
 
     onAlert() {
-        alert("something wrong!");
+        alert("something is wrong!");
     }
 
     turnOnHover() {
