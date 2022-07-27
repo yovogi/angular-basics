@@ -11,6 +11,26 @@ export class FormdemoComponent implements OnInit {
     onSubmit() {
         console.log(this.sgnForm.value);
     }
+
+    myContext = {
+        $implicit: "World",
+        type: "username",
+    };
+
+    myContextPassword = {
+        $implicit: "World",
+        type: "password",
+    };
+
+    myContextEmail = {
+        $implicit: "World",
+        type: "email",
+    };
+
+    myContextNote = {
+        $implicit: "World",
+        type: "note",
+    };
     constructor() {}
 
     ngOnInit(): void {}

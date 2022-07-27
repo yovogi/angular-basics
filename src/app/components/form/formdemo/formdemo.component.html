@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col-md-6">
             <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
+                <ng-container *ngTemplateOutlet="inputTemplate; context: myContext"></ng-container>
+                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextPassword"></ng-container>
+                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextEmail"></ng-container>
+                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextNote  "></ng-container>
+                <!-- <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" ngModel name="username" required minlength="3" class="form-control"
                         #username="ngModel">
@@ -34,9 +38,20 @@
                         (at
                         least 3 characters)</span>
                 </div>
-                <p *ngIf="!signupForm.valid && signupForm.touched && signupForm.dirty">The form is invalid!</p>
+                <p *ngIf="!signupForm.valid && signupForm.touched && signupForm.dirty">The form is invalid!</p> -->
                 <button class="btn btn-primary" [disabled]="!signupForm.valid" type="submit">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+<ng-template #inputTemplate let-type="type"><span>
+        <div class="form-group">
+            <label for=name>{{type | uppercase}}</label>
+            <input type="text" [id]='type' ngModel [name]='type' required minlength="3" class="form-control"
+                #typee="ngModel">
+            <span class="help-block red" *ngIf="!typee.valid && typee.touched">Please enter a {{type}}!
+                (at
+                least 3 characters)</span>
+        </div>
+    </span></ng-template>
