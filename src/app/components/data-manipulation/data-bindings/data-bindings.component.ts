@@ -6,6 +6,7 @@ import {
     OnInit,
     SimpleChanges,
 } from "@angular/core";
+import { MathUtilService } from "src/app/services";
 
 @Component({
     selector: "data-binding",
@@ -18,6 +19,7 @@ export class DataBindingComponent
     public secondNumber: number;
     public operation: string;
     public name: string;
+    constructor(private math: MathUtilService) {}
 
     public setFirstNumber(value) {
         this.firstNumber = +value;
@@ -26,17 +28,25 @@ export class DataBindingComponent
     public setSecondNumber(value) {
         this.secondNumber = +value;
     }
+    // public getResult(): number {
+    //     switch (this.operation) {
+    //         case "+":
+    //             return this.firstNumber + this.secondNumber;
+    //         case "-":
+    //             return this.firstNumber - this.secondNumber;
+    //         case "*":
+    //             return this.firstNumber * this.secondNumber;
+    //         case "÷":
+    //             return this.firstNumber / this.secondNumber;
+    //     }
+    // }
+
     public getResult(): number {
-        switch (this.operation) {
-            case "+":
-                return this.firstNumber + this.secondNumber;
-            case "-":
-                return this.firstNumber - this.secondNumber;
-            case "*":
-                return this.firstNumber * this.secondNumber;
-            case "÷":
-                return this.firstNumber / this.secondNumber;
-        }
+        return this.math.getResult(
+            this.firstNumber,
+            this.secondNumber,
+            this.operation
+        );
     }
 
     ngOnInit(): void {
