@@ -9,6 +9,6 @@ import { PagesModule } from "./components/pages/pages.module";
     declarations: [AppComponent],
     imports: [BrowserModule, AppRoutingModule, PagesModule],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

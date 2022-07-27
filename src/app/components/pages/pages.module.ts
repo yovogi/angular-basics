@@ -8,6 +8,9 @@ import { PipesDemoComponent } from "./pipes-demo/pipes-demo.component";
 import { WeatherComponent } from "./weather/weather.component";
 import { CommonModule } from "@angular/common";
 import { AnimalsModule } from "src/app/animals/animals.module";
+import { FormpageComponent } from "./formpage/formpage.component";
+import { PagesRoutingModule } from "./pages-routing.module";
+import { FormdemoModule } from "../form/formdemo/formdemo.module";
 
 @NgModule({
     declarations: [
@@ -17,8 +20,15 @@ import { AnimalsModule } from "src/app/animals/animals.module";
         DirectivesDemoComponent,
         PipesDemoComponent,
         WeatherComponent,
+        FormpageComponent,
     ],
-    imports: [DataManipulationModule, CommonModule, AnimalsModule],
+    imports: [
+        DataManipulationModule,
+        CommonModule,
+        AnimalsModule,
+        FormdemoModule,
+        PagesRoutingModule,
+    ],
     exports: [],
 })
 export class PagesModule {}
