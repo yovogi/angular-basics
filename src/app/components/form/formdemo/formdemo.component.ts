@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Form, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
     selector: "app-formdemo",
@@ -7,31 +7,40 @@ import { NgForm } from "@angular/forms";
     styleUrls: ["./formdemo.component.css"],
 })
 export class FormdemoComponent implements OnInit {
-    @ViewChild("signupForm", { static: false }) sgnForm: NgForm;
-    onSubmit() {
-        console.log(this.sgnForm.value);
-    }
+    public bannedUsers: String[] = ["yovo", "pavkata", "stakata", "ivan"];
 
-    myContext = {
-        $implicit: "World",
-        type: "username",
-    };
+    public myForm: FormGroup = new FormGroup({
+        username: new FormControl("", [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(10),
+            this.customValidator.bind(this),
+        ]),
+        email: new FormControl("", [Validators.required, Validators.email]),
+        password: new FormControl("", [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(12),
+        ]),
+        note: new FormControl("", [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(20),
+        ]),
+    });
 
-    myContextPassword = {
-        $implicit: "World",
-        type: "password",
-    };
-
-    myContextEmail = {
-        $implicit: "World",
-        type: "email",
-    };
-
-    myContextNote = {
-        $implicit: "World",
-        type: "note",
-    };
     constructor() {}
 
     ngOnInit(): void {}
+
+    onSubmit() {
+        console.log(this.myForm);
+    }
+
+    customValidator(control: FormControl): { [s: string]: boolean } {
+        if (this.bannedUsers.includes(control.value)) {
+            return { customValidation: true };
+        }
+        return null;
+    }
 }

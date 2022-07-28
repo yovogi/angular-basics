@@ -1,57 +1,78 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
-                <ng-container *ngTemplateOutlet="inputTemplate; context: myContext"></ng-container>
-                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextPassword"></ng-container>
-                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextEmail"></ng-container>
-                <ng-container *ngTemplateOutlet="inputTemplate; context: myContextNote  "></ng-container>
-                <!-- <div class="form-group">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" ngModel name="username" required minlength="3" class="form-control"
-                        #username="ngModel">
-                    <span class="help-block red" *ngIf="!username.valid && username.touched">Please enter a username!
-                        (at
-                        least 3 characters)</span>
+                    <input type="text" id="username" name="username" formControlName="username" class="form-control">
+                    <div *ngIf="!myForm.controls.username.valid && myForm.controls.username.touched">
+                        <span class="help-block red" *ngIf="myForm.controls.username.errors.required">Please enter a
+                            username!
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.username.errors.minlength">Username must be
+                            at least
+                            3 characters
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.username.errors.maxlength">Username can be
+                            max
+                            10
+                            characters long.
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.username.errors.customValidation">Username
+                            is banned ( front end BAN :D )
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" ngModel name="email" required email class="form-control"
-                        #email="ngModel">
-                    <span class="help-block red" *ngIf="!email.valid && email.touched">Please enter a valid
-                        email!</span>
+                    <input type="email" id="email" name="email" formControlName="email" class="form-control">
+                    <div *ngIf="!myForm.controls.email.valid && myForm.controls.email.touched">
+                        <span class="help-block red" *ngIf="myForm.controls.email.errors.required">Please enter an
+                            email!
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.email.errors.email">Invalid email address
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" ngModel required minlength="3"
-                        #password="ngModel" class="form-control">
-                    <span class="help-block red" *ngIf="!password.valid && password.touched">Please enter a valid
-                        password!
-                        (at
-                        least 3 characters)</span>
+                    <input type="password" id="password" name="password" formControlName="password"
+                        class="form-control">
+                    <div *ngIf="!myForm.controls.password.valid && myForm.controls.password.touched">
+                        <span class="help-block red" *ngIf="myForm.controls.password.errors.required">Please enter a
+                            password!
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.password.errors.minlength">Password must be
+                            at least
+                            4 characters
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.password.errors.maxlength">Password can be
+                            max
+                            12
+                            characters long.
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="text">Secret Note</label>
-                    <input type="text" id="note" name="note" ngModel required minlength="3" #note="ngModel"
-                        class="form-control">
-                    <span class="help-block red" *ngIf="!note.valid && note.touched">Please enter a valid secret note!
-                        (at
-                        least 3 characters)</span>
+                    <input type="text" id="note" name="note" formControlName="note" class="form-control">
+                    <div *ngIf="!myForm.controls.note.valid && myForm.controls.note.touched">
+                        <span class="help-block red" *ngIf="myForm.controls.note.errors.required">Please enter a
+                            note!
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.note.errors.minlength">Note must be
+                            at least
+                            5 characters
+                        </span>
+                        <span class="help-block red" *ngIf="myForm.controls.note.errors.maxlength">Note can be
+                            max
+                            20
+                            characters long.
+                        </span>
+                    </div>
                 </div>
-                <p *ngIf="!signupForm.valid && signupForm.touched && signupForm.dirty">The form is invalid!</p> -->
-                <button class="btn btn-primary" [disabled]="!signupForm.valid" type="submit">Submit</button>
+                <button class="btn btn-primary" [disabled]="!myForm.valid" type="submit">Submit</button>
             </form>
         </div>
     </div>
 </div>
-
-<ng-template #inputTemplate let-type="type"><span>
-        <div class="form-group">
-            <label for=name>{{type | uppercase}}</label>
-            <input type="text" [id]='type' ngModel [name]='type' required minlength="3" class="form-control"
-                #typee="ngModel">
-            <span class="help-block red" *ngIf="!typee.valid && typee.touched">Please enter a {{type}}!
-                (at
-                least 3 characters)</span>
-        </div>
-    </span></ng-template>
