@@ -9,20 +9,11 @@ export class WeatherComponent implements OnInit {
     public cityWeather: IWeatherData;
     public city: string = "";
     constructor(private weather: WeatherService) {}
-    ngOnInit(): void {
-        this.weather.sayHi();
-        // console.log("hello");
-        this.weather.getWeather(this.city).subscribe((r) => {
-            this.cityWeather = r;
-            console.log(this.cityWeather);
-        });
-    }
+    ngOnInit(): void {}
 
     handleChange() {
-        console.log("Changed");
         this.weather.getWeather(this.city).subscribe((r) => {
             this.cityWeather = r;
-            console.log(this.cityWeather);
         });
     }
 }
