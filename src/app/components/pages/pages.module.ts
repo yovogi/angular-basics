@@ -11,6 +11,7 @@ import { AnimalsModule } from "src/app/animals/animals.module";
 import { FormpageComponent } from "./formpage/formpage.component";
 import { PagesRoutingModule } from "./pages-routing.module";
 import { FormdemoModule } from "../form/formdemo/formdemo.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { FormdemoModule } from "../form/formdemo/formdemo.module";
         AnimalsModule,
         FormdemoModule,
         PagesRoutingModule,
+        FormsModule,
     ],
     exports: [],
 })

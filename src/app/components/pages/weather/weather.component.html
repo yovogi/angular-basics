@@ -1,11 +1,29 @@
-<div class="p-5">
-    <h3>This is where your weather info should go.</h3>
-    <div *ngIf="cityWeather">
-        <div>name: {{ cityWeather.cityName }}</div>
-        <div>temperature: {{ cityWeather.temperature }}</div>
-        <div>humidity: {{ cityWeather.humidity }}</div>
-        <div>weather description: {{ cityWeather.weatherDescription }}</div>
-        <div>sunrise: {{ cityWeather.sunrise }}</div>
-        <div>sunset: {{ cityWeather.sunset }}</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <form>
+                <label for="city">Select city</label>
+                <select name="city" class="form-control" [(ngModel)]="city" (change)="handleChange()">
+                    <option value="london">Лондон</option>
+                    <option value="madrid">Мадрид</option>
+                    <option value="rome">Рим</option>
+                    <option value="paris">Париж</option>
+                    <option value="sofia">София</option>
+                    <option value="yambol">Ямбол</option>
+                </select>
+            </form>
+        </div>
+        <div class="col-md-7">
+            <h2 *ngIf="!cityWeather">No city selected!</h2>
+            <div *ngIf="cityWeather">
+                <div>name: {{ cityWeather.name }}</div>
+                <div>temperature: {{ cityWeather.main.temp }}</div>
+                <div>humidity: {{ cityWeather.main.humidity }}</div>
+                <div>weather description: {{ cityWeather.weather[0].description }}</div>
+                <div>sunrise: {{ cityWeather.sys.sunrise | date:'h:mm:ss a z'}}</div>
+                <div>sunset: {{ cityWeather.sys.sunset | date:'h:mm:ss a z' }}</div>
+            </div>
+        </div>
+
     </div>
 </div>
